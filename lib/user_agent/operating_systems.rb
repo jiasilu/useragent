@@ -1,6 +1,7 @@
 class UserAgent
   module OperatingSystems
-    IOS_VERSION_REGEX = /CPU (?:iPhone |iPod )?OS ([\d_]+) like Mac OS X/
+    IOS_VERSION_REGEX = /CPU (?:iPhone |iPad )?OS ([\d_]+) like Mac OS X/
+    ANDROID_VERSION_REGEX = /Android ([\d_]+)/
 
     Windows = {
       "Windows NT 10.0" => "Windows 10",
@@ -19,7 +20,7 @@ class UserAgent
     }.freeze
 
     def self.normalize_os(os)
-      Windows[os] || normalize_mac_os_x(os) || normalize_ios(os) || normalize_chrome_os(os) || os
+      Windows[os] || normalize_mac_os_x(os) || normalize_ios(os) || normalize_chrome_os(os) || os[3..-1]
     end
 
     private
@@ -40,7 +41,7 @@ class UserAgent
             "iOS"
           else
             version = $1.tr('_', '.')
-            "iOS #{version}"
+            "#{version}"
           end
         end
       end
@@ -51,7 +52,7 @@ class UserAgent
             "OS X"
           else
             version = $1.tr('_', '.')
-            "OS X #{version}"
+            "#{version}"
           end
         end
       end
