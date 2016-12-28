@@ -1,7 +1,6 @@
 class UserAgent
   module OperatingSystems
     IOS_VERSION_REGEX = /CPU (?:iPhone |iPad )?OS ([\d_]+) like Mac OS X/
-    ANDROID_VERSION_REGEX = /Android ([\d_]+)/
 
     Windows = {
       "Windows NT 10.0" => "Windows 10",
