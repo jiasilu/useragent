@@ -14,6 +14,7 @@ require 'user_agent/browsers/playstation'
 require 'user_agent/browsers/podcast_addict'
 require 'user_agent/browsers/vivaldi'
 require 'user_agent/browsers/blur_browser'
+require 'user_agent/browsers/uu_browser'
 
 class UserAgent
   module Browsers
@@ -39,6 +40,7 @@ class UserAgent
       AppleCoreMedia,
       Libavformat,
       BlurBrowser,
+      UUBrowser
     ].freeze
 
     def self.all
